@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/Game-site/static/css/main.6833ff25.css",
+    "main.js": "/Game-site/static/js/main.5bcef88d.js",
+    "static/media/let login.png": "/Game-site/static/media/let login.52097f0ddf2968091a1a.png",
+    "static/media/bg.png": "/Game-site/static/media/bg.e9cd4d8934199f2a5182.png",
+    "static/media/fa-solid-900.ttf": "/Game-site/static/media/fa-solid-900.4a2cd718d7031b732e76.ttf",
+    "static/media/fa-brands-400.ttf": "/Game-site/static/media/fa-brands-400.150de8eaa454d669c405.ttf",
+    "static/media/logo.png": "/Game-site/static/media/logo.548dc5719c2345c22eef.png",
+    "static/media/fa-solid-900.woff2": "/Game-site/static/media/fa-solid-900.bb975c966c37455a1bc3.woff2",
+    "static/media/left Register.jpg": "/Game-site/static/media/left Register.1a34c06b5ce6c263968f.jpg",
+    "static/media/fa-brands-400.woff2": "/Game-site/static/media/fa-brands-400.e033a13ee751afc1860c.woff2",
+    "static/media/fa-regular-400.ttf": "/Game-site/static/media/fa-regular-400.d87474231f4192884802.ttf",
+    "static/media/fa-regular-400.woff2": "/Game-site/static/media/fa-regular-400.3223dc79c1adee56370b.woff2",
+    "static/media/fa-v4compatibility.ttf": "/Game-site/static/media/fa-v4compatibility.0e3a648be390bd8cb094.ttf",
+    "static/media/fa-v4compatibility.woff2": "/Game-site/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
+    "static/media/slick.svg": "/Game-site/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Game-site/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Game-site/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Game-site/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Game-site/index.html",
+    "main.6833ff25.css.map": "/Game-site/static/css/main.6833ff25.css.map",
+    "main.5bcef88d.js.map": "/Game-site/static/js/main.5bcef88d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6833ff25.css",
+    "static/js/main.5bcef88d.js"
+  ]
+}
