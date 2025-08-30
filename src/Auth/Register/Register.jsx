@@ -16,7 +16,7 @@ export default function Register() {
   async function signUp(values) {
     setisLoading(true);
     let { data } = await axios
-      .post("https://route-ecommerce.onrender.com/api/v1/auth/signup", values)
+      .post(process.env.REACT_APP_AUTH_URL+"/api/v1/auth/signup", values)
       .catch((error) => {
         if (error.response) {
           seterror(error.response.data.message);

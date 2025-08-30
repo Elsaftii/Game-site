@@ -3,12 +3,12 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import leftPhoto from "../../images/let login.png";
 import axios from "axios";
-import "./Login.css";
-import { Link, useNavigate } from "react-router-dom";
+import "./ResetPassword.css";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 
-export default function Login({ saveUserData }) {
+export default function ResetPassword() {
   const navigate = useNavigate();
   const [error, seterror] = useState("");
   const [isLoading, setisLoading] = useState(false);
@@ -16,19 +16,17 @@ export default function Login({ saveUserData }) {
   async function signUp(values) {
     setisLoading(true);
     let { data } = await axios
-      .post("https://route-ecommerce.onrender.com/api/v1/auth/signin", values)
+      .put(
+        process.env.REACT_APP_AUTH_URL+"/api/v1/auth/resetPassword",
+        values
+      )
       .catch((error) => {
         if (error.response) {
           seterror(error.response.data.message);
           setisLoading(false);
         }
       });
-    if (data.message === "success") {
-      setisLoading(false);
-      localStorage.setItem("UserData", JSON.stringify(data.user));
-      localStorage.setItem("UserToken", JSON.stringify(data.token));
-      saveUserData();
-
+    if (data.token) {
       const Toast = Swal.mixin({
         toast: true,
         position: "bottom-start",
@@ -45,21 +43,25 @@ export default function Login({ saveUserData }) {
 
       Toast.fire({
         icon: "success",
-        title: `Logged in`,
+        title: `Password Changed`,
       });
     }
-    navigate("/");
+    setTimeout(() => {
+      navigate("/login");
+    }, 1500);
+    setisLoading(false);
   }
+
   const formik = useFormik({
     initialValues: {
-      email: JSON.parse(sessionStorage.getItem("userMail")) || "",
-      password: "",
+      email: JSON.parse(sessionStorage.getItem("userMail")),
+      newPassword: "",
     },
     validationSchema: Yup.object({
       email: Yup.string()
         .required("Required")
         .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Invalid Email Address"),
-      password: Yup.string()
+      newPassword: Yup.string()
         .matches(
           /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
           "Minimum eight characters, at least one letter and one number, Without special character"
@@ -77,7 +79,7 @@ export default function Login({ saveUserData }) {
           name="description"
           content="list of games that can be played both online and offline on Windows operating system as well as on various web browsers. The list includes popular games from various genres such as action, adventure, puzzle, racing, and more. Users can easily browse through the list, choose their desired game"
         />
-        <title>Login</title>
+        <title>Reset Password</title>
       </Helmet>
       <div className="bg">
         <div className="layer">
@@ -91,7 +93,7 @@ export default function Login({ saveUserData }) {
                 />
               </div>
               <div className="form d-flex flex-column justify-content-center col-md-6 p-4 rounded-end">
-                <h4 className="text-center pb-3">Login</h4>
+                <h4 className="text-center pb-3">Reset Password</h4>
                 <form onSubmit={formik.handleSubmit} className="row">
                   {error ? (
                     <>
@@ -111,6 +113,7 @@ export default function Login({ saveUserData }) {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.email}
+                      disabled
                     />
                     {formik.touched.email && formik.errors.email ? (
                       <div className="alert alert-dark text-danger ps-2 pe-2 pt-0 pb-0 w-100 text-center mt-2 mb-0">
@@ -122,16 +125,16 @@ export default function Login({ saveUserData }) {
                     <input
                       type="password"
                       className="form-control"
-                      id="password"
-                      name="password"
-                      placeholder="Password"
+                      id="newPassword"
+                      name="newPassword"
+                      placeholder="New Password"
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.password}
+                      value={formik.values.newPassword}
                     />
-                    {formik.touched.password && formik.errors.password ? (
+                    {formik.touched.newPassword && formik.errors.newPassword ? (
                       <div className="alert alert-dark text-danger ps-2 pe-2 pt-0 pb-0 w-100 text-center mt-2 mb-0">
-                        {formik.errors.password}
+                        {formik.errors.newPassword}
                       </div>
                     ) : null}
                   </div>
@@ -144,22 +147,10 @@ export default function Login({ saveUserData }) {
                       type="submit"
                       className="btn btn-primary w-75 m-auto"
                     >
-                      Login
+                      Submit
                     </button>
                   )}
                 </form>
-                <p className="mt-5 mb-1">
-                  Forgot your password?{" "}
-                  <Link className="text-decoration-none" to={"/forgotpassword"}>
-                    Reset
-                  </Link>
-                </p>
-                <p>
-                  Don't have an account?{" "}
-                  <Link className="text-decoration-none" to={"/register"}>
-                    Register
-                  </Link>
-                </p>
               </div>
             </div>
           </div>

@@ -5,13 +5,18 @@ import AllGames from "./Components/AllGames/AllGames";
 import Platforms from "./Components/Platforms/Platforms";
 import Sort from "./Components/Sort/Sort";
 import Categories from "./Components/Categories/Categories";
-import Login from "./Components/Login/Login";
-import Register from "./Components/Register/Register";
+// import Login from "./Components/Login/Login";
+// import Register from "./Components/Register/Register";
+// IMPORT OF AUTH FILES
+import Login from "./Auth/Login/Login";
+import Register from "./Auth/Register/Register";
+import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
+import ResetPassword from "./Auth/ResetPassword/ResetPassword";
+// END IMPORT OF AUTH FILES
 import NotFound from "./Components/NotFound/NotFound";
 import GameDetails from "./Components/GameDetails/GameDetails";
 import { useEffect, useState } from "react";
-import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
-import ResetPassword from "./Components/ResetPassword/ResetPassword";
+
 import ProtectedRoutes from "./Components/ProtectedRoutes/ProtectedRoutes";
 
 export default function App() {

@@ -19,7 +19,8 @@ export default function ForgotPassword() {
     seterror("");
     let { data } = await axios
       .post(
-        "https://route-ecommerce.onrender.com/api/v1/auth/forgotPasswords",
+        process.env.REACT_APP_AUTH_URL+
+        "/api/v1/auth/forgotPasswords",
         values
       )
       .catch((error) => {
@@ -73,7 +74,7 @@ export default function ForgotPassword() {
     seterror("");
     let { data } = await axios
       .post(
-        "https://route-ecommerce.onrender.com/api/v1/auth/verifyResetCode",
+        process.env.REACT_APP_AUTH_URL+"/api/v1/auth/verifyResetCode",
         values
       )
       .catch((error) => {
